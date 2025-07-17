@@ -1,0 +1,56 @@
+type User @entity {
+  id: ID!
+  address: Bytes!
+  totalReceived: BigInt!
+  totalTransactions: BigInt!
+  reputationScore: BigInt!
+  firstTransactionAt: BigInt!
+  lastTransactionAt: BigInt!
+  isVerified: Boolean!
+  transactions: [Transaction!]! @derivedFrom(field: "to")
+  aidDisbursements: [AidDisbursement!]! @derivedFrom(field: "recipient")
+  createdAt: BigInt!
+  updatedAt: BigInt!
+}
+
+type Transaction @entity {
+  id: ID!
+  hash: Bytes!
+  from: Bytes!
+  to: User!
+  value: BigInt!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  isAidDisbursement: Boolean!
+  aidDisbursement: AidDisbursement
+}
+
+type AidDisbursement @entity {
+  id: ID!
+  recipient: User!
+  amount: BigInt!
+  sender: Bytes!
+  purpose: String
+  timestamp: BigInt!
+  transaction: Transaction!
+  reputationImpact: BigInt!
+}
+
+type ReputationScore @entity {
+  id: ID!
+  user: User!
+  score: BigInt!
+  level: String!
+  achievedAt: BigInt!
+  factors: [String!]!
+}
+
+type GlobalStats @entity {
+  id: ID!
+  totalUsers: BigInt!
+  totalTransactions: BigInt!
+  totalValueTransferred: BigInt!
+  totalAidDisbursed: BigInt!
+  averageReputationScore: BigInt!
+  lastUpdated: BigInt!
+} 

@@ -1,0 +1,19 @@
+{
+  "name": "mira-reputation-subgraph",
+  "version": "0.1.0",
+  "description": "MIRA Reputation Tracking Subgraph",
+  "repository": "https://github.com/mira-sanctuary/mira-reputation",
+  "license": "MIT",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ mira-sanctuary/mira-reputation",
+    "create-local": "graph create --node http://localhost:8020/ mira-sanctuary/mira-reputation",
+    "remove-local": "graph remove --node http://localhost:8020/ mira-sanctuary/mira-reputation",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 mira-sanctuary/mira-reputation"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.69.0",
+    "@graphprotocol/graph-ts": "0.32.0"
+  }
+} 
