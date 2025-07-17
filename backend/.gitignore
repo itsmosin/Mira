@@ -1,0 +1,14 @@
+/node_modules
+/dist
+/build
+/public
+/src
+/test
+/docsx
+/examples
+/scripts
+/config
+/logs
+
+
+.env
